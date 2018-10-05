@@ -11,11 +11,11 @@ const katakana = {
 };
 
 class KanaDisplay extends Component {
-  state = {symbol: "オ"}
+  //state = {symbol: "オ"}
   render() {
     return (
     <div className="KanaDisplay">
-      <div className="KanaDisplay-symbol">{this.state.symbol}</div>
+      <div className="KanaDisplay-symbol">{this.props.symbol}</div>
     </div>
     )
   }
@@ -26,10 +26,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Learn Kana ツ</h1>
         </header>
-        <KanaDisplay />
+        <KanaDisplay symbol="エ" />
       </div>
     );
   }
