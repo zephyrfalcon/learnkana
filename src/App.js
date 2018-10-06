@@ -44,12 +44,22 @@ class KanaLearningRight extends Component {
 }
 
 class KanaInputArea extends Component {
+  constructor(props) {
+    super(props);
+    this.handleEnter = this.handleEnter.bind(this);
+  }
+  handleEnter(event) {  
+    if (event.keyCode == 13) alert("You entered: " + event.target.value)
+    // XXX I would like to access the text input by name, how do I do this?
+  }
   render() {
     return (
       <div class="KanaInputArea">
         <KanaDisplay symbol="ア" />
         <input type="text" name="kana" maxlength="4" 
-               class="KanaLearningLeft-input-text" />
+               class="KanaLearningLeft-input-text"
+               onKeyUp={this.handleEnter}
+        />
       </div>
     )
   }
