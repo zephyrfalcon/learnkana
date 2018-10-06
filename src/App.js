@@ -48,10 +48,8 @@ class KanaInputArea extends Component {
     return (
       <div class="KanaInputArea">
         <KanaDisplay symbol="ア" />
-        <form>
-          <input type="text" name="kana" maxlength="4" 
-                 class="KanaLearningLeft-input-text" />
-        </form>
+        <input type="text" name="kana" maxlength="4" 
+               class="KanaLearningLeft-input-text" />
       </div>
     )
   }
