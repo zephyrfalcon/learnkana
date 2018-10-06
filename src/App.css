@@ -29,19 +29,46 @@
 
 /* KanaDisplay */
 
+.KanaInputArea {
+    width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
 .KanaDisplay {
   border-color: black;
   border-style: solid;
   width: 100px;
-  height: 100px;
   margin-left: auto;
   margin-right: auto;
   padding: 5px;
-
 }
 
 .KanaDisplay-symbol {
   font-size: 80px;
   font-family: "Comic Sans MS", cursive, sans-serif;
+  height: 100px;
   /* bizarrely, Comic Sans displays the characters nicer? */
 }
+
+.KanaDisplay-input {
+}
+
+.KanaLearningLeft {
+    width: 50%;
+    float: left;
+}
+
+.KanaLearningLeft input.KanaLearningLeft-input-text {
+    width: 110px;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.KanaLearningRight {
+    width: 50%;
+    float: right;
+}
+
