@@ -11,10 +11,25 @@ const katakana = {
 };
 
 class KanaLearning extends Component {
+  constructor(props) {
+    super(props);
+    this.pickSymbol = this.pickSymbol.bind(this);
+
+    this.state = {
+      symbol: 'ア',
+    }
+  }
+
+  pickSymbol() {
+    let keys = Object.keys(katakana);
+    let randomKey = keys[keys.length * Math.random() << 0];
+    this.setState({symbol: randomKey});
+  }
+
   render() {
     return (
-      <div class="KanaLearning">
-      <KanaLearningLeft />
+      <div className="KanaLearning">
+      <KanaLearningLeft symbol={this.state.symbol} />
       <KanaLearningRight />
     </div>
     )
@@ -24,8 +39,8 @@ class KanaLearning extends Component {
 class KanaLearningLeft extends Component {
   render() {
     return (
-      <div class="KanaLearningLeft">
-        <KanaInputArea />
+      <div className="KanaLearningLeft">
+        <KanaInputArea symbol={this.props.symbol} />
       </div>
     )
   }
@@ -34,7 +49,7 @@ class KanaLearningLeft extends Component {
 class KanaLearningRight extends Component {
   render() {
     return (
-      <div class="KanaLearningRight">
+      <div className="KanaLearningRight">
         <div>score</div>
         <div>options</div>
         <div>info etc</div>
@@ -47,17 +62,26 @@ class KanaInputArea extends Component {
   constructor(props) {
     super(props);
     this.handleEnter = this.handleEnter.bind(this);
+    this.checkInput = this.checkInput.bind(this);
+  }
+  checkInput(text) {
+    // does the KanaInputArea need to check this, or should we do this
+    // elsewhere? it needs to know the symbol and the text we entered.
+    // currently the symbol is hardcoded, but in a real version it needs to be
+    // passed down (via props I assume), by some object that generates these
+    // randomly.
   }
   handleEnter(event) {  
-    if (event.keyCode == 13) alert("You entered: " + event.target.value)
+    if (event.keyCode === 13) alert("You entered: " + event.target.value)
     // XXX I would like to access the text input by name, how do I do this?
+    this.checkInput(event.target.value);
   }
   render() {
     return (
-      <div class="KanaInputArea">
-        <KanaDisplay symbol="ア" />
+      <div className="KanaInputArea">
+        <KanaDisplay symbol={this.props.symbol} />
         <input type="text" name="kana" maxlength="4" 
-               class="KanaLearningLeft-input-text"
+               className="KanaLearningLeft-input-text"
                onKeyUp={this.handleEnter}
         />
       </div>
@@ -66,7 +90,6 @@ class KanaInputArea extends Component {
 }
 
 class KanaDisplay extends Component {
-  //state = {symbol: "オ"}
   render() {
     return (
     <div className="KanaDisplay">
