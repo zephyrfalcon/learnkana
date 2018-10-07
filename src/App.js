@@ -29,30 +29,14 @@ class KanaLearning extends Component {
   render() {
     return (
       <div className="KanaLearning">
-      <KanaLearningLeft symbol={this.state.symbol} />
-      <KanaLearningRight />
-    </div>
-    )
-  }
-}
-
-class KanaLearningLeft extends Component {
-  render() {
-    return (
-      <div className="KanaLearningLeft">
-        <KanaInputArea symbol={this.props.symbol} />
-      </div>
-    )
-  }
-}
-
-class KanaLearningRight extends Component {
-  render() {
-    return (
-      <div className="KanaLearningRight">
-        <div>score</div>
-        <div>options</div>
-        <div>info etc</div>
+        <div className="KanaLearningLeft">
+          <KanaInputArea symbol={this.state.symbol} />
+        </div>
+        <div className="KanaLearningRight">
+          <div>score</div>
+          <div>options</div>
+          <div>info etc</div>
+        </div>
       </div>
     )
   }
