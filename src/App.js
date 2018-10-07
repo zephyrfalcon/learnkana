@@ -18,24 +18,46 @@ class KanaLearning extends Component {
 
     this.state = {
       symbol: 'ア',
+      answerMessage: "",
     }
   }
 
   pickSymbol() {
+    let oldSymbol = this.state.symbol;
     let keys = Object.keys(katakana);
-    let randomKey = keys[keys.length * Math.random() << 0];
+
+    let randomKey = oldSymbol;
+    // pick a new random symbol; make sure it's not the same as the previous
+    // one
+    while (randomKey === this.state.symbol) {
+      randomKey = keys[keys.length * Math.random() << 0];
+    }
     this.setState({symbol: randomKey});
   }
 
   checkAnswer(answer) {
-    alert("Checking your answer... " + answer)
+    //alert("Checking your answer... " + answer)
+    let realAnswer = katakana[this.state.symbol];
+    if (answer === realAnswer) {
+      alert("Correct!");
+      // XXX instead of an alert, would like to wait a second or so, display
+      // CORRECT below the input box (or wherever), then start the next round
+      this.setState({answerMessage: "CORRECT"});
+      this.pickSymbol();
+    } else {
+      alert("no!");
+      this.setState({answerMessage: "WRONG"});
+    }
   }
 
   render() {
     return (
       <div className="KanaLearning">
         <div className="KanaLearningLeft">
-          <KanaInputArea symbol={this.state.symbol} onCheckAnswer={this.checkAnswer} />
+          <KanaInputArea symbol={this.state.symbol} 
+                         onCheckAnswer={this.checkAnswer} 
+                         answerMessage={this.state.answerMessage}
+          />
         </div>
         <div className="KanaLearningRight">
           <div>score</div>
@@ -50,18 +72,24 @@ class KanaLearning extends Component {
 /* props:
  * symbol: the kana symbol to be displayed
  * onCheckAnswer(answer): callback to check the answer when we press Enter
+ * answerMessage: "", "CORRECT" or "WRONG"
+   (I guess the idea is that KanaLearning knows whether the answer is wrong or 
+   not, but KanaInputArea does/should not!)
  */
 class KanaInputArea extends Component {
+
   constructor(props) {
     super(props);
     this.handleEnter = this.handleEnter.bind(this);
   }
+
   handleEnter(event) {  
     if (event.keyCode === 13) {
       // use a callback method via props to check the answer
       this.props.onCheckAnswer(event.target.value);
     }
   }
+
   render() {
     return (
       <div className="KanaInputArea">
@@ -70,11 +98,13 @@ class KanaInputArea extends Component {
                className="KanaLearningLeft-input-text"
                onKeyUp={this.handleEnter}
         />
+        <div class="KanaInputArea-answer">{this.props.answerMessage}</div>
       </div>
     )
   }
 }
 
+// XXX redundant as well??
 class KanaDisplay extends Component {
   render() {
     return (
