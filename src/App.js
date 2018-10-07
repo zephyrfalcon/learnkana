@@ -14,6 +14,7 @@ class KanaLearning extends Component {
   constructor(props) {
     super(props);
     this.pickSymbol = this.pickSymbol.bind(this);
+    this.checkAnswer = this.checkAnswer.bind(this);
 
     this.state = {
       symbol: 'ア',
@@ -26,11 +27,15 @@ class KanaLearning extends Component {
     this.setState({symbol: randomKey});
   }
 
+  checkAnswer(answer) {
+    alert("Checking your answer... " + answer)
+  }
+
   render() {
     return (
       <div className="KanaLearning">
         <div className="KanaLearningLeft">
-          <KanaInputArea symbol={this.state.symbol} />
+          <KanaInputArea symbol={this.state.symbol} onCheckAnswer={this.checkAnswer} />
         </div>
         <div className="KanaLearningRight">
           <div>score</div>
@@ -42,23 +47,20 @@ class KanaLearning extends Component {
   }
 }
 
+/* props:
+ * symbol: the kana symbol to be displayed
+ * onCheckAnswer(answer): callback to check the answer when we press Enter
+ */
 class KanaInputArea extends Component {
   constructor(props) {
     super(props);
     this.handleEnter = this.handleEnter.bind(this);
-    this.checkInput = this.checkInput.bind(this);
-  }
-  checkInput(text) {
-    // does the KanaInputArea need to check this, or should we do this
-    // elsewhere? it needs to know the symbol and the text we entered.
-    // currently the symbol is hardcoded, but in a real version it needs to be
-    // passed down (via props I assume), by some object that generates these
-    // randomly.
   }
   handleEnter(event) {  
-    if (event.keyCode === 13) alert("You entered: " + event.target.value)
-    // XXX I would like to access the text input by name, how do I do this?
-    this.checkInput(event.target.value);
+    if (event.keyCode === 13) {
+      // use a callback method via props to check the answer
+      this.props.onCheckAnswer(event.target.value);
+    }
   }
   render() {
     return (
