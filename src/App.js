@@ -93,24 +93,15 @@ class KanaInputArea extends Component {
   render() {
     return (
       <div className="KanaInputArea">
-        <KanaDisplay symbol={this.props.symbol} />
+        <div className="KanaDisplay">
+          <div className="KanaDisplay-symbol">{this.props.symbol}</div>
+        </div>
         <input type="text" name="kana" maxlength="4" 
                className="KanaLearningLeft-input-text"
                onKeyUp={this.handleEnter}
         />
         <div class="KanaInputArea-answer">{this.props.answerMessage}</div>
       </div>
-    )
-  }
-}
-
-// XXX redundant as well??
-class KanaDisplay extends Component {
-  render() {
-    return (
-    <div className="KanaDisplay">
-      <div className="KanaDisplay-symbol">{this.props.symbol}</div>
-    </div>
     )
   }
 }
