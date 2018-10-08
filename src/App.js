@@ -18,7 +18,7 @@ class KanaLearning extends Component {
 
     this.state = {
       symbol: 'ア',
-      answerMessage: "",
+      answerCorrect: undefined,
     }
   }
 
@@ -42,11 +42,11 @@ class KanaLearning extends Component {
       alert("Correct!");
       // XXX instead of an alert, would like to wait a second or so, display
       // CORRECT below the input box (or wherever), then start the next round
-      this.setState({answerMessage: "CORRECT"});
+      this.setState({answerCorrect: true});
       this.pickSymbol();
     } else {
       alert("no!");
-      this.setState({answerMessage: "WRONG"});
+      this.setState({answerCorrect: false});
     }
   }
 
@@ -56,11 +56,16 @@ class KanaLearning extends Component {
         <div className="KanaLearningLeft">
           <KanaInputArea symbol={this.state.symbol} 
                          onCheckAnswer={this.checkAnswer} 
-                         answerMessage={this.state.answerMessage}
+                         answerCorrect={this.state.answerCorrect}
           />
         </div>
         <div className="KanaLearningRight">
-          <div>score</div>
+          <div>
+            <div>Number of kana tried: ...</div>
+            <div>Number of kana correct: ...</div>
+            <div>Number of wrong answers: ...</div>
+            <div>Percentage: ...</div>
+          </div>
           <div>options</div>
           <div>info etc</div>
         </div>
@@ -72,7 +77,7 @@ class KanaLearning extends Component {
 /* props:
  * symbol: the kana symbol to be displayed
  * onCheckAnswer(answer): callback to check the answer when we press Enter
- * answerMessage: "", "CORRECT" or "WRONG"
+ * answerCorrect: true/false/undefined
    (I guess the idea is that KanaLearning knows whether the answer is wrong or 
    not, but KanaInputArea does/should not!)
  */
@@ -81,6 +86,7 @@ class KanaInputArea extends Component {
   constructor(props) {
     super(props);
     this.handleEnter = this.handleEnter.bind(this);
+    this.answerMessage = this.answerMessage.bind(this);
   }
 
   handleEnter(event) {  
@@ -88,6 +94,11 @@ class KanaInputArea extends Component {
       // use a callback method via props to check the answer
       this.props.onCheckAnswer(event.target.value);
     }
+  }
+
+  answerMessage(correct) {
+    if (correct === undefined) return "";
+    return correct ? "CORRECT" : "WRONG";
   }
 
   render() {
@@ -100,7 +111,7 @@ class KanaInputArea extends Component {
                className="KanaLearningLeft-input-text"
                onKeyUp={this.handleEnter}
         />
-        <div class="KanaInputArea-answer">{this.props.answerMessage}</div>
+        <div class="KanaInputArea-answer">{this.answerMessage(this.props.answerCorrect)}</div>
       </div>
     )
   }
@@ -113,7 +124,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Learn Kana! ツ</h1>
         </header>
-      <KanaLearning />
+        <KanaLearning />
       </div>
     );
   }
