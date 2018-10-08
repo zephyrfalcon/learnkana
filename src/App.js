@@ -19,6 +19,8 @@ class KanaLearning extends Component {
     this.state = {
       symbol: 'ア',
       answerCorrect: undefined,
+      numCorrect: 0,
+      numWrong: 0,
     }
   }
 
@@ -35,18 +37,18 @@ class KanaLearning extends Component {
     this.setState({symbol: randomKey});
   }
 
+  /* Callback function */
   checkAnswer(answer) {
-    //alert("Checking your answer... " + answer)
     let realAnswer = katakana[this.state.symbol];
     if (answer === realAnswer) {
       alert("Correct!");
       // XXX instead of an alert, would like to wait a second or so, display
       // CORRECT below the input box (or wherever), then start the next round
-      this.setState({answerCorrect: true});
+      this.setState({answerCorrect: true, numCorrect: this.state.numCorrect+1});
       this.pickSymbol();
     } else {
       alert("no!");
-      this.setState({answerCorrect: false});
+      this.setState({answerCorrect: false, numWrong: this.state.numWrong+1});
     }
   }
 
@@ -61,9 +63,11 @@ class KanaLearning extends Component {
         </div>
         <div className="KanaLearningRight">
           <div>
-            <div>Number of kana tried: ...</div>
-            <div>Number of kana correct: ...</div>
-            <div>Number of wrong answers: ...</div>
+            <div>Number of kana tried: 
+              {this.state.numCorrect + this.state.numWrong}
+            </div>
+            <div>Number of kana correct: {this.state.numCorrect}</div>
+            <div>Number of wrong answers: {this.state.numWrong}</div>
             <div>Percentage: ...</div>
           </div>
           <div>options</div>
