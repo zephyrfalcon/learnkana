@@ -49,6 +49,7 @@ class KanaLearning extends Component {
     } else {
       alert("no!");
       this.setState({answerCorrect: false, numWrong: this.state.numWrong+1});
+      this.pickSymbol();
     }
   }
 

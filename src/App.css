@@ -39,16 +39,16 @@
 .KanaDisplay {
   border-color: black;
   border-style: solid;
-  width: 100px;
+  width: 120px;
   margin-left: auto;
   margin-right: auto;
   padding: 5px;
 }
 
 .KanaDisplay-symbol {
-  font-size: 80px;
+  font-size: 100px;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  height: 100px;
+  height: 140px;
   /* bizarrely, Comic Sans displays the characters nicer? */
 }
 
@@ -61,10 +61,12 @@
 }
 
 .KanaLearningLeft input.KanaLearningLeft-input-text {
-    width: 110px;
-    margin: 5px;
+    width: 132px;
+    margin: 7px;
     margin-left: auto;
     margin-right: auto;
+    border: solid #808080 1px;
+    height: 1.5em;
 }
 
 .KanaLearningRight {
@@ -87,3 +89,4 @@
   border-style: solid;
   text-align: left;
 }
+
