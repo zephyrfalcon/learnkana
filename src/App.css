@@ -72,3 +72,18 @@
     float: right;
 }
 
+.KanaLearningRight-results {
+    border-color: #C0C0C0;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.KanaLearningRight-results tr {
+}
+
+.KanaLearningRight-results td {
+  border-color: #C0C0C0;
+  border-width: 1px;
+  border-style: solid;
+  text-align: left;
+}

@@ -62,16 +62,25 @@ class KanaLearning extends Component {
           />
         </div>
         <div className="KanaLearningRight">
-          <div>
-            <div>Number of kana tried: 
-              {this.state.numCorrect + this.state.numWrong}
-            </div>
-            <div>Number of kana correct: {this.state.numCorrect}</div>
-            <div>Number of wrong answers: {this.state.numWrong}</div>
-            <div>Percentage: ...</div>
-          </div>
-          <div>options</div>
-          <div>info etc</div>
+          <table className="KanaLearningRight-results">
+            <tbody>
+              <tr>
+                <td colspan="2">Results</td>
+              </tr>
+              <tr>
+                <td>Number of kana tried:</td>
+                <td>{this.state.numCorrect + this.state.numWrong}</td>
+              </tr>
+              <tr>
+                <td>Correct answers:</td>
+                <td>{this.state.numCorrect}</td>
+              </tr>
+              <tr>
+                <td>Wrong answers:</td>
+                <td>{this.state.numWrong}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     )
