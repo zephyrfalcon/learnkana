@@ -15,6 +15,7 @@ class KanaLearning extends Component {
     super(props);
     this.pickSymbol = this.pickSymbol.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
+    this.nextRound = this.nextRound.bind(this);
 
     this.state = {
       symbol: 'ア',
@@ -41,16 +42,22 @@ class KanaLearning extends Component {
   checkAnswer(answer) {
     let realAnswer = katakana[this.state.symbol];
     if (answer === realAnswer) {
-      alert("Correct!");
+      //alert("Correct!");
       // XXX instead of an alert, would like to wait a second or so, display
       // CORRECT below the input box (or wherever), then start the next round
       this.setState({answerCorrect: true, numCorrect: this.state.numCorrect+1});
-      this.pickSymbol();
     } else {
-      alert("no!");
+      //alert("no!");
       this.setState({answerCorrect: false, numWrong: this.state.numWrong+1});
-      this.pickSymbol();
     }
+    this.nextRound();
+  }
+
+  nextRound() {
+    setTimeout(() => {
+      this.pickSymbol()
+      this.setState({answerCorrect: undefined})
+    }, 1000);
   }
 
   render() {
@@ -82,6 +89,8 @@ class KanaLearning extends Component {
               </tr>
             </tbody>
           </table>
+          <div className="KanaLearningRight-options">
+          </div>
         </div>
       </div>
     )
