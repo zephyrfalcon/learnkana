@@ -13,6 +13,8 @@ const katakana = {
 class KanaLearning extends Component {
   constructor(props) {
     super(props);
+
+    // bind skulduggery
     this.pickSymbol = this.pickSymbol.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.nextRound = this.nextRound.bind(this);
@@ -110,6 +112,8 @@ class KanaInputArea extends Component {
     super(props);
     this.handleEnter = this.handleEnter.bind(this);
     this.answerMessage = this.answerMessage.bind(this);
+
+    this.inputBox = React.createRef();
   }
 
   handleEnter(event) {  
@@ -125,13 +129,22 @@ class KanaInputArea extends Component {
   }
 
   render() {
+    // this is a bit of a hack... if we currently don't have an answer (i.e. it's
+    // undefined), which should only happen when we first start the app or when a
+    // previous answer is cleared, then clear the input text box.
+    if (this.props.answerCorrect === undefined) {
+      if (this.inputBox.current) this.inputBox.current.value = "";
+    }
+
+    // used to determine the name of the CSS class for the answer
     let answerstr = this.props.answerCorrect === undefined ? "empty" : (this.props.answerCorrect ? "correct" : "wrong");
+
     return (
       <div className="KanaInputArea">
         <div className="KanaDisplay">
           <div className="KanaDisplay-symbol">{this.props.symbol}</div>
         </div>
-        <input type="text" name="kana" maxlength="4" 
+        <input ref={this.inputBox} type="text" name="kana" maxlength="4" 
                className="KanaLearningLeft-input-text"
                onKeyUp={this.handleEnter}
         />

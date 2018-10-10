@@ -75,12 +75,13 @@
 }
 
 .KanaLearningLeft input.KanaLearningLeft-input-text {
-    width: 132px;
+    width: 133px;
     margin: 7px;
     margin-left: auto;
     margin-right: auto;
     border: solid #808080 1px;
     height: 1.5em;
+    font-size: 0.8em;
 }
 
 .KanaLearningRight {
