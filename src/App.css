@@ -36,6 +36,20 @@
     margin-top: 10px;
 }
 
+.KanaInputArea-answer {
+  font-weight: bold;
+}
+
+.KanaInputArea-answer-empty {
+  display: invisible;
+}
+.KanaInputArea-answer-correct {
+  color: green;
+}
+.KanaInputArea-answer-wrong {
+  color: red;
+}
+
 .KanaDisplay {
   border-color: black;
   border-style: solid;

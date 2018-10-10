@@ -125,6 +125,7 @@ class KanaInputArea extends Component {
   }
 
   render() {
+    let answerstr = this.answerMessage === undefined ? "empty" : (this.answerMessage ? "correct" : "wrong");
     return (
       <div className="KanaInputArea">
         <div className="KanaDisplay">
@@ -134,7 +135,9 @@ class KanaInputArea extends Component {
                className="KanaLearningLeft-input-text"
                onKeyUp={this.handleEnter}
         />
-        <div class="KanaInputArea-answer">{this.answerMessage(this.props.answerCorrect)}</div>
+        <div className={"KanaInputArea-answer KanaInputArea-answer-"+answerstr}>
+          {this.answerMessage(this.props.answerCorrect)}
+        </div>
       </div>
     )
   }
