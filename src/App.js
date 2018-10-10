@@ -115,7 +115,7 @@ class KanaInputArea extends Component {
   handleEnter(event) {  
     if (event.keyCode === 13) {
       // use a callback method via props to check the answer
-      this.props.onCheckAnswer(event.target.value);
+      this.props.onCheckAnswer(event.target.value.trim());
     }
   }
 
@@ -125,7 +125,7 @@ class KanaInputArea extends Component {
   }
 
   render() {
-    let answerstr = this.answerMessage === undefined ? "empty" : (this.answerMessage ? "correct" : "wrong");
+    let answerstr = this.props.answerCorrect === undefined ? "empty" : (this.props.answerCorrect ? "correct" : "wrong");
     return (
       <div className="KanaInputArea">
         <div className="KanaDisplay">
