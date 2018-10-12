@@ -157,6 +157,25 @@ class KanaInputArea extends Component {
   }
 }
 
+class Instructions extends Component {
+  render() {
+    return <p>Instructions</p>
+  }
+}
+
+class KatakanaTable extends Component {
+  render() {
+    return <p>TODO: katakana table</p>
+  }
+}
+
+class HiraganaTable extends Component {
+  render() {
+    return <p>TODO: hiragana table</p>
+  }
+}
+
+
 class App extends Component {
   render() {
     return (
