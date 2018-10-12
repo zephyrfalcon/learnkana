@@ -132,6 +132,7 @@ class KanaInputArea extends Component {
     // this is a bit of a hack... if we currently don't have an answer (i.e. it's
     // undefined), which should only happen when we first start the app or when a
     // previous answer is cleared, then clear the input text box.
+    // XXX think of a better way to do this.
     if (this.props.answerCorrect === undefined) {
       if (this.inputBox.current) this.inputBox.current.value = "";
     }
@@ -163,7 +164,15 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Learn Kana! ツ</h1>
         </header>
-        <KanaLearning />
+        <div className="LearnKana-Tabs">
+          <span>Training</span>
+          <span>Katakana Table</span>
+          <span>Hiragana Table</span>
+          <span>Instructions</span>
+        </div>
+        <div className="LearnKana-main">
+          <KanaLearning />
+        </div>
       </div>
     );
   }

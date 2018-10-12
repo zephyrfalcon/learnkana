@@ -105,3 +105,18 @@
   text-align: left;
 }
 
+.LearnKana-Tabs {
+  text-align: left;
+  padding: 5px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.LearnKana-Tabs span {
+  background-color: #C0C0FF;
+  margin: 5px;
+  padding: 5px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+}
