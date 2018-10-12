@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 const katakana = {
@@ -10,6 +9,10 @@ const katakana = {
   "オ": "o",
 };
 
+// save the scores and options here so we don't lose them when we click on
+// another tab
+let savedState = undefined;
+
 class KanaLearning extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +22,7 @@ class KanaLearning extends Component {
     this.checkAnswer = this.checkAnswer.bind(this);
     this.nextRound = this.nextRound.bind(this);
 
-    this.state = {
+    this.state = savedState || {
       symbol: 'ア',
       answerCorrect: undefined,
       numCorrect: 0,
@@ -59,7 +62,8 @@ class KanaLearning extends Component {
     setTimeout(() => {
       this.pickSymbol()
       this.setState({answerCorrect: undefined})
-    }, 1000);
+      savedState = this.state;
+      }, 1000);
   }
 
   render() {
