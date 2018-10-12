@@ -177,6 +177,19 @@ class HiraganaTable extends Component {
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.setTab = this.setTab.bind(this);
+
+    this.state = {
+      component: KanaLearning,
+    };
+  }
+
+  setTab(component) {
+    this.setState({component: component});
+  }
+
   render() {
     return (
       <div className="App">
@@ -184,13 +197,13 @@ class App extends Component {
           <h1 className="App-title">Learn Kana! ツ</h1>
         </header>
         <div className="LearnKana-Tabs">
-          <span>Training</span>
-          <span>Katakana Table</span>
-          <span>Hiragana Table</span>
-          <span>Instructions</span>
+          <span onClick={() => this.setTab(KanaLearning)}>Training</span>
+          <span onClick={() => this.setTab(KatakanaTable)}>Katakana Table</span>
+          <span onClick={() => this.setTab(HiraganaTable)}>Hiragana Table</span>
+          <span onClick={() => this.setTab(Instructions)}>Instructions</span>
         </div>
         <div className="LearnKana-main">
-          <KanaLearning />
+          <this.state.component />
         </div>
       </div>
     );
