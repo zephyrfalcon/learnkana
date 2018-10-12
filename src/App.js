@@ -92,10 +92,9 @@ class KanaLearning extends Component {
             </tbody>
           </table>
           <div className="KanaLearningRight-options">
-            <div>
-              <input type="checkbox" name="show" value="show-katakana"/> show katakana</div>
-            <div>
-              <input type="checkbox" name="show" value="show-hiragana"/> show hiragana</div>
+            <div><input type="radio" name="show-what" value="katakana"/> only show katakana</div>
+            <div><input type="radio" name="show-what" value="hiragana"/> only show hiragana</div>
+            <div><input type="radio" name="show-what" value="both"/> show both</div>
           </div>
         </div>
       </div>
