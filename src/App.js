@@ -47,12 +47,8 @@ class KanaLearning extends Component {
   checkAnswer(answer) {
     let realAnswer = katakana[this.state.symbol];
     if (answer === realAnswer) {
-      //alert("Correct!");
-      // XXX instead of an alert, would like to wait a second or so, display
-      // CORRECT below the input box (or wherever), then start the next round
       this.setState({answerCorrect: true, numCorrect: this.state.numCorrect+1});
     } else {
-      //alert("no!");
       this.setState({answerCorrect: false, numWrong: this.state.numWrong+1});
     }
     this.nextRound();
@@ -96,6 +92,10 @@ class KanaLearning extends Component {
             </tbody>
           </table>
           <div className="KanaLearningRight-options">
+            <div>
+              <input type="checkbox" name="show" value="show-katakana"/> show katakana</div>
+            <div>
+              <input type="checkbox" name="show" value="show-hiragana"/> show hiragana</div>
           </div>
         </div>
       </div>
