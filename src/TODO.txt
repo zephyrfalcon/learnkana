@@ -1,0 +1,4 @@
+TODO
+
+- options need to be stored
+- options could be moved to separate component?
