@@ -19,6 +19,12 @@ const hiragana = {
 
 const allKana = Object.assign({}, katakana, hiragana);
 
+function symbols(showWhat) {
+  return showWhat === 'both' ? allKana :
+        (showWhat === 'katakana' ? katakana : hiragana);
+}
+
+
 // save the scores and options here so we don't lose them when we click on
 // another tab
 let savedState = undefined;
@@ -44,9 +50,7 @@ class KanaLearning extends Component {
 
   pickSymbol() {
     let oldSymbol = this.state.symbol;
-    let symbols = this.state.showWhat === 'both' ? allKana :
-                 (this.state.showWhat === 'katakana' ? katakana : hiragana);
-    let keys = Object.keys(symbols);
+    let keys = Object.keys(symbols(this.state.showWhat));
 
     let randomKey = oldSymbol;
     // pick a new random symbol; make sure it's not the same as the previous
@@ -59,7 +63,8 @@ class KanaLearning extends Component {
 
   /* Callback function */
   checkAnswer(answer) {
-    let realAnswer = katakana[this.state.symbol];
+    let syms = symbols(this.state.showWhat);
+    let realAnswer = syms[this.state.symbol];
     if (answer === realAnswer) {
       this.setState({answerCorrect: true, numCorrect: this.state.numCorrect+1});
     } else {

@@ -8,3 +8,7 @@ TODO
 
 - add instructions
 - add katakana/hiragana tables
+
+- case should be irrelevant for the answers given!
+  i.e. convert to lowercase
+  
