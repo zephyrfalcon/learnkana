@@ -9,6 +9,16 @@ const katakana = {
   "オ": "o",
 };
 
+const hiragana = {
+  "あ": "a",
+  "い": "i",
+  "う": "u",
+  "え": "e",
+  "お": "o",
+};
+
+const allKana = Object.assign({}, katakana, hiragana);
+
 // save the scores and options here so we don't lose them when we click on
 // another tab
 let savedState = undefined;
@@ -34,7 +44,9 @@ class KanaLearning extends Component {
 
   pickSymbol() {
     let oldSymbol = this.state.symbol;
-    let keys = Object.keys(katakana);
+    let symbols = this.state.showWhat === 'both' ? allKana :
+                 (this.state.showWhat === 'katakana' ? katakana : hiragana);
+    let keys = Object.keys(symbols);
 
     let randomKey = oldSymbol;
     // pick a new random symbol; make sure it's not the same as the previous
