@@ -2,3 +2,9 @@ TODO
 
 - options need to be stored
 - options could be moved to separate component?
+- add some hiragana
+- show katakana and/or hiragana depending on options
+- radiobuttons need to show correct selection when we move back
+
+- add instructions
+- add katakana/hiragana tables

@@ -21,12 +21,14 @@ class KanaLearning extends Component {
     this.pickSymbol = this.pickSymbol.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.nextRound = this.nextRound.bind(this);
+    this.setOption = this.setOption.bind(this);
 
     this.state = savedState || {
       symbol: 'ア',
       answerCorrect: undefined,
       numCorrect: 0,
       numWrong: 0,
+      showWhat: "both",
     }
   }
 
@@ -62,6 +64,10 @@ class KanaLearning extends Component {
       }, 1000);
   }
 
+  setOption(showWhat) {
+    this.setState({showWhat: showWhat});
+  }
+
   render() {
     return (
       <div className="KanaLearning">
@@ -92,9 +98,9 @@ class KanaLearning extends Component {
             </tbody>
           </table>
           <div className="KanaLearningRight-options">
-            <div><input type="radio" name="show-what" value="katakana"/> only show katakana</div>
-            <div><input type="radio" name="show-what" value="hiragana"/> only show hiragana</div>
-            <div><input type="radio" name="show-what" value="both"/> show both</div>
+            <div><input type="radio" name="show-what" value="katakana" onClick={() => this.setOption("katakana")} /> only show katakana</div>
+            <div><input type="radio" name="show-what" value="hiragana" onClick={() => this.setOption("hiragana")} /> only show hiragana</div>
+            <div><input type="radio" name="show-what" value="both" onClick={() => this.setOption("both")} /> show both</div>
           </div>
         </div>
       </div>
