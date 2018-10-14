@@ -54,18 +54,6 @@ class KanaLearning extends Component {
   }
 
   pickSymbol() {
-    /*
-    let oldSymbol = this.state.symbol;
-    let keys = Object.keys(symbols(this.state.showWhat));
-
-    let randomKey = oldSymbol;
-    // pick a new random symbol; make sure it's not the same as the previous
-    // one
-    while (randomKey === this.state.symbol) {
-      randomKey = keys[keys.length * Math.random() << 0];
-    }
-    this.setState({symbol: randomKey});
-    */
    let allKanaShown = symbols(this.state.showWhat);
    let oldKana = this.state.currentKana;
    let randomKana = oldKana;
@@ -203,15 +191,37 @@ class Instructions extends Component {
   }
 }
 
+function groupKanaByRow(kana) {
+  let rows = [], currentRow = [], row = 1;
+  kana.map(item => {
+    if (item.row === row) {
+      currentRow.push(item);
+    } else {
+      rows.push(currentRow);
+      currentRow = [item];
+      row = item.row;
+    }
+  });
+  if (currentRow.length > 0) rows.push(currentRow);
+  return rows;
+}
+
 // should probably take the katakana variable as a prop
 // we can then reuse this code with for the hiragana table as well
 class KatakanaTable extends Component {
   render() {
+    let kanaRows = groupKanaByRow(katakana);
     return (
       <div className="KanaTable">
         <table>
           <tbody>
-
+            {kanaRows.map(row => 
+              <tr>
+                {row.map(kana =>
+                  <td>{kana.symbol}</td>
+                )}
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
