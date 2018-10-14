@@ -203,6 +203,20 @@ class HiraganaTable extends Component {
   }
 }
 
+/* Display a kana symbol in the table.
+   Props:
+   symbol: the kana symbol
+   value: the value/pronunciation
+*/
+class KanaSymbol {
+  render() {
+    <div className="KanaSymbol">
+      <div>{this.props.symbol}</div>
+      <div>{this.props.value}</div>
+    </div>
+  }
+}
+
 
 class App extends Component {
   constructor(props) {
