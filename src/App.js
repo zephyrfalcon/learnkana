@@ -206,11 +206,13 @@ function groupKanaByRow(kana) {
   return rows;
 }
 
-// should probably take the katakana variable as a prop
-// we can then reuse this code with for the hiragana table as well
-class KatakanaTable extends Component {
+/* Displays a katakana or hiragana table.
+   Props:
+   kana: either the katakana or hiragana array
+*/
+class KanaTable extends Component {
   render() {
-    let kanaRows = groupKanaByRow(katakana);
+    let kanaRows = groupKanaByRow(this.props.kana);
     return (
       <div className="KanaTable">
         <table>
@@ -229,9 +231,15 @@ class KatakanaTable extends Component {
   }
 }
 
+class KatakanaTable extends Component {
+  render() {
+    return <KanaTable kana={katakana} />
+  }
+}
+
 class HiraganaTable extends Component {
   render() {
-    return <p>TODO: hiragana table</p>
+    return <KanaTable kana={hiragana} />
   }
 }
 

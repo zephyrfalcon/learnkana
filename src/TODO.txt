@@ -21,3 +21,7 @@ TODO:
 - case should be irrelevant for the answers given!
   i.e. convert to lowercase
 
+- technically I should be able to replace KatakanaTable and HiraganaTable with
+  just calls to KanaTable and the appropriate prop, but I don't know (yet) how
+  to do this with the current setup. (App calls <this.state.component />; I need
+  to figure out how to pass props to this.
