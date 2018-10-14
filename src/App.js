@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 
 const katakana = [
-  {symbol: "ア", value: "a", position: [1,1]},
-  {symbol: "イ", value: "i", position: [2,1]},
-  {symbol: "ウ", value: "u", position: [3,1]},
-  {symbol: "エ", value: "e", position: [4,1]},
-  {symbol: "オ", value: "o", position: [5,1]},
+  {symbol: "ア", value: "a", row: 1, column: 1},
+  {symbol: "イ", value: "i", row: 1, column: 2},
+  {symbol: "ウ", value: "u", row: 1, column: 3},
+  {symbol: "エ", value: "e", row: 1, column: 4},
+  {symbol: "オ", value: "o", row: 1, column: 5},
+  {symbol: "カ", value: "ka", row: 2, column: 1},
+  {symbol: "キ", value: "ki", row: 2, column: 2},
+  {symbol: "ク", value: "ku", row: 2, column: 3},
+  {symbol: "ケ", value: "ke", row: 2, column: 4},
+  {symbol: "コ", value: "ko", row: 2, column: 5},
 ];
 
 const hiragana = [
@@ -202,7 +207,15 @@ class Instructions extends Component {
 // we can then reuse this code with for the hiragana table as well
 class KatakanaTable extends Component {
   render() {
-    return <p>TODO: katakana table</p>
+    return (
+      <div className="KanaTable">
+        <table>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+    );
   }
 }
 
