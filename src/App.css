@@ -125,3 +125,29 @@
   border-style: solid;
   border-width: 1px;
 }
+
+.KanaTable {
+}
+
+.KanaTable tr {
+}
+
+.KanaTable td {
+  border: 1px solid #C0C0C0;
+  /* these don't really belong here...? */
+  height: 100px;
+  width: 100px;
+}
+
+.KanaSymbol {
+}
+
+.KanaSymbol-symbol {
+  font-size: 70px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  width: 100px;
+}
+
+.KanaSymbol-value {
+  border-top: 1px solid #C0C0C0;
+}

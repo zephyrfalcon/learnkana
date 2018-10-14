@@ -16,6 +16,8 @@ TODO:
     (should also be an array with up to 5 kana objects) to do the <td>s 
   - these should of course be rendered by the KanaSymbol component 
 
+- FIXME: kana tables will have "holes" in them; this is currently not handled
+
 - case should be irrelevant for the answers given!
   i.e. convert to lowercase
 

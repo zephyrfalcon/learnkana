@@ -218,7 +218,7 @@ class KatakanaTable extends Component {
             {kanaRows.map(row => 
               <tr>
                 {row.map(kana =>
-                  <td>{kana.symbol}</td>
+                  <td><KanaSymbol kana={kana} /></td>
                 )}
               </tr>
             )}
@@ -239,12 +239,14 @@ class HiraganaTable extends Component {
    Props:
    kana: the kana object to be displayed (with keys "symbol" and "value")
 */
-class KanaSymbol {
+class KanaSymbol extends Component {
   render() {
-    <div className="KanaSymbol">
-      <div>{this.props.kana.symbol}</div>
-      <div>{this.props.kana.value}</div>
-    </div>
+    return (
+      <div className="KanaSymbol">
+        <div className="KanaSymbol-symbol">{this.props.kana.symbol}</div>
+        <div className="KanaSymbol-value">{this.props.kana.value}</div>
+      </div>
+    )
   }
 }
 
