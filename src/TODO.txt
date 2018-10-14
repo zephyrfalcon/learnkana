@@ -1,4 +1,4 @@
-TODO
+TODO:
 
 - options need to be stored
 - options could be moved to separate component?
@@ -8,7 +8,17 @@ TODO
 
 - add instructions
 - add katakana/hiragana tables
+  - idea: instead of key: value, use an array of objects like this:
+    let katakana = [
+      {symbol: "ア", value: "a", position: [1,1]},
+      ...
+    where the position indicates where it appears in the table that we
+    must render.
+    it seems inefficient though, because when rendering we will need to scan
+    the table each time to find the symbol at the position (x,y) we're currently
+    at. fortunately the tables aren't large.
+    of course the code that selects symbols must be updated.
 
 - case should be irrelevant for the answers given!
   i.e. convert to lowercase
-  
+

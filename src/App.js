@@ -189,6 +189,8 @@ class Instructions extends Component {
   }
 }
 
+// should probably take the katakana variable as a prop
+// we can then reuse this code with for the hiragana table as well
 class KatakanaTable extends Component {
   render() {
     return <p>TODO: katakana table</p>
