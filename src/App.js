@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const katakana = {
-  "ア": "a",
-  "イ": "i",
-  "ウ": "u",
-  "エ": "e",
-  "オ": "o",
-};
+const katakana = [
+  {symbol: "ア", value: "a", position: [1,1]},
+  {symbol: "イ", value: "i", position: [2,1]},
+  {symbol: "ウ", value: "u", position: [3,1]},
+  {symbol: "エ", value: "e", position: [4,1]},
+  {symbol: "オ", value: "o", position: [5,1]},
+];
 
-const hiragana = {
-  "あ": "a",
-  "い": "i",
-  "う": "u",
-  "え": "e",
-  "お": "o",
-};
+const hiragana = [
+  {symbol: "あ", value: "a", position: [1,1]},
+  {symbol: "い", value: "i", position: [2,1]},
+  {symbol: "う", value: "u", position: [3,1]},
+  {symbol: "え", value: "e", position: [4,1]},
+  {symbol: "お", value: "o", position: [5,1]},
+];
 
-const allKana = Object.assign({}, katakana, hiragana);
+const allKana = [].concat(katakana, hiragana);
 
 function symbols(showWhat) {
   return showWhat === 'both' ? allKana :
@@ -40,7 +40,7 @@ class KanaLearning extends Component {
     this.setOption = this.setOption.bind(this);
 
     this.state = savedState || {
-      symbol: 'ア',
+      currentKana: katakana[0],
       answerCorrect: undefined,
       numCorrect: 0,
       numWrong: 0,
@@ -49,6 +49,7 @@ class KanaLearning extends Component {
   }
 
   pickSymbol() {
+    /*
     let oldSymbol = this.state.symbol;
     let keys = Object.keys(symbols(this.state.showWhat));
 
@@ -59,13 +60,21 @@ class KanaLearning extends Component {
       randomKey = keys[keys.length * Math.random() << 0];
     }
     this.setState({symbol: randomKey});
+    */
+   let allKanaShown = symbols(this.state.showWhat);
+   let oldKana = this.state.currentKana;
+   let randomKana = oldKana;
+   while (randomKana == this.state.currentKana) {
+     randomKana = allKanaShown[Math.floor(Math.random() * allKanaShown.length)];
+   }
+   this.setState({currentKana: randomKana});
   }
 
   /* Callback function */
   checkAnswer(answer) {
-    let syms = symbols(this.state.showWhat);
-    let realAnswer = syms[this.state.symbol];
-    if (answer === realAnswer) {
+    //let syms = symbols(this.state.showWhat);
+    //let realAnswer = syms[this.state.symbol];
+    if (answer === this.state.currentKana.value) {
       this.setState({answerCorrect: true, numCorrect: this.state.numCorrect+1});
     } else {
       this.setState({answerCorrect: false, numWrong: this.state.numWrong+1});
@@ -89,7 +98,7 @@ class KanaLearning extends Component {
     return (
       <div className="KanaLearning">
         <div className="KanaLearningLeft">
-          <KanaInputArea symbol={this.state.symbol} 
+          <KanaInputArea kana={this.state.currentKana} 
                          onCheckAnswer={this.checkAnswer} 
                          answerCorrect={this.state.answerCorrect}
           />
@@ -126,7 +135,7 @@ class KanaLearning extends Component {
 }
 
 /* props:
- * symbol: the kana symbol to be displayed
+ * kana: the kana symbol to be displayed
  * onCheckAnswer(answer): callback to check the answer when we press Enter
  * answerCorrect: true/false/undefined
    (I guess the idea is that KanaLearning knows whether the answer is wrong or 
@@ -169,7 +178,7 @@ class KanaInputArea extends Component {
     return (
       <div className="KanaInputArea">
         <div className="KanaDisplay">
-          <div className="KanaDisplay-symbol">{this.props.symbol}</div>
+          <div className="KanaDisplay-symbol">{this.props.kana.symbol}</div>
         </div>
         <input ref={this.inputBox} type="text" name="kana" maxlength="4" 
                className="KanaLearningLeft-input-text"
@@ -205,14 +214,13 @@ class HiraganaTable extends Component {
 
 /* Display a kana symbol in the table.
    Props:
-   symbol: the kana symbol
-   value: the value/pronunciation
+   kana: the kana object to be displayed (with keys "symbol" and "value")
 */
 class KanaSymbol {
   render() {
     <div className="KanaSymbol">
-      <div>{this.props.symbol}</div>
-      <div>{this.props.value}</div>
+      <div>{this.props.kana.symbol}</div>
+      <div>{this.props.kana.value}</div>
     </div>
   }
 }
