@@ -12,6 +12,11 @@ const katakana = [
   {symbol: "ク", value: "ku", row: 2, column: 3},
   {symbol: "ケ", value: "ke", row: 2, column: 4},
   {symbol: "コ", value: "ko", row: 2, column: 5},
+  {symbol: "サ", value: "sa", row: 3, column: 1},
+  {symbol: "シ", value: "si", row: 3, column: 2},
+  {symbol: "ス", value: "su", row: 3, column: 3},
+  {symbol: "セ", value: "se", row: 3, column: 4},
+  {symbol: "ソ", value: "so", row: 3, column: 5},
 ];
 
 const hiragana = [
@@ -147,7 +152,7 @@ class KanaInputArea extends Component {
   handleEnter(event) {  
     if (event.keyCode === 13) {
       // use a callback method via props to check the answer
-      this.props.onCheckAnswer(event.target.value.trim());
+      this.props.onCheckAnswer(event.target.value.toLowerCase().trim());
     }
   }
 
