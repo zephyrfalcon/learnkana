@@ -151,3 +151,7 @@
 .KanaSymbol-value {
   border-top: 1px solid #C0C0C0;
 }
+
+.smiley {
+  color: yellow;
+}

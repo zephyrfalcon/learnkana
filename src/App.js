@@ -13,10 +13,25 @@ const katakana = [
   {symbol: "ケ", value: "ke", row: 2, column: 4},
   {symbol: "コ", value: "ko", row: 2, column: 5},
   {symbol: "サ", value: "sa", row: 3, column: 1},
-  {symbol: "シ", value: "si", row: 3, column: 2},
+  {symbol: "シ", value: "shi", row: 3, column: 2},
   {symbol: "ス", value: "su", row: 3, column: 3},
   {symbol: "セ", value: "se", row: 3, column: 4},
   {symbol: "ソ", value: "so", row: 3, column: 5},
+  {symbol: "タ", value: "ta", row: 4, column: 1},
+  {symbol: "チ", value: "chi", row: 4, column: 2},
+  {symbol: "ツ", value: "tsu", row: 4, column: 3},
+  {symbol: "テ", value: "te", row: 4, column: 4},
+  {symbol: "ト", value: "to", row: 4, column: 5},
+  {symbol: "ナ", value: "na", row: 5, column: 1},
+  {symbol: "ニ", value: "ni", row: 5, column: 2},
+  {symbol: "ヌ", value: "nu", row: 5, column: 3},
+  {symbol: "ネ", value: "ne", row: 5, column: 4},
+  {symbol: "ノ", value: "no", row: 5, column: 5},
+  {symbol: "ハ", value: "ha", row: 6, column: 1},
+  {symbol: "ヒ", value: "hi", row: 6, column: 2},
+  {symbol: "フ", value: "fu", row: 6, column: 3},
+  {symbol: "ヘ", value: "he", row: 6, column: 4},
+  {symbol: "ホ", value: "ho", row: 6, column: 5},
 ];
 
 const hiragana = [
@@ -33,7 +48,6 @@ function symbols(showWhat) {
   return showWhat === 'both' ? allKana :
         (showWhat === 'katakana' ? katakana : hiragana);
 }
-
 
 // save the scores and options here so we don't lose them when we click on
 // another tab
@@ -59,13 +73,13 @@ class KanaLearning extends Component {
   }
 
   pickSymbol() {
-   let allKanaShown = symbols(this.state.showWhat);
-   let oldKana = this.state.currentKana;
-   let randomKana = oldKana;
-   while (randomKana == this.state.currentKana) {
-     randomKana = allKanaShown[Math.floor(Math.random() * allKanaShown.length)];
-   }
-   this.setState({currentKana: randomKana});
+    let allKanaShown = symbols(this.state.showWhat);
+    let oldKana = this.state.currentKana;
+    let randomKana = oldKana;
+    while (randomKana == this.state.currentKana) {
+      randomKana = allKanaShown[Math.floor(Math.random() * allKanaShown.length)];
+    }
+    this.setState({currentKana: randomKana});
   }
 
   /* Callback function */
@@ -282,7 +296,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Learn Kana! ツ</h1>
+          <h1 className="App-title">Learn Kana! <span className="smiley">ツ</span></h1>
         </header>
         <div className="LearnKana-Tabs">
           <span onClick={() => this.setTab(KanaLearning)}>Training</span>
