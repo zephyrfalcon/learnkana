@@ -72,6 +72,10 @@ class KanaLearning extends Component {
     }
   }
 
+  componentDidMount() {
+    this.pickSymbol();
+  }
+
   pickSymbol() {
     let allKanaShown = symbols(this.state.showWhat);
     let oldKana = this.state.currentKana;
