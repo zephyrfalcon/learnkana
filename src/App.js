@@ -37,15 +37,26 @@ const katakana = [
   {symbol: "ム", value: "mu", row: 7, column: 3},
   {symbol: "メ", value: "me", row: 7, column: 4},
   {symbol: "モ", value: "mo", row: 7, column: 5},
+  {symbol: "ヤ", value: "ya", row: 8, column: 1},
+  {symbol: "ユ", value: "yu", row: 8, column: 3},
+  {symbol: "ヨ", value: "yo", row: 8, column: 5},
+  {symbol: "ラ", value: "ra", row: 9, column: 1},
+  {symbol: "リ", value: "ri", row: 9, column: 2},
+  {symbol: "ル", value: "ru", row: 9, column: 3},
+  {symbol: "レ", value: "re", row: 9, column: 4},
+  {symbol: "ロ", value: "ro", row: 9, column: 5},
 ];
 
 const hiragana = [
-  {symbol: "あ", value: "a", position: [1,1]},
-  {symbol: "い", value: "i", position: [2,1]},
-  {symbol: "う", value: "u", position: [3,1]},
-  {symbol: "え", value: "e", position: [4,1]},
-  {symbol: "お", value: "o", position: [5,1]},
+  {symbol: "あ", value: "a", row: 1, column: 1},
+  {symbol: "い", value: "i", row: 1, column: 2},
+  {symbol: "う", value: "u", row: 1, column: 3},
+  {symbol: "え", value: "e", row: 1, column: 4},
+  {symbol: "お", value: "o", row: 1, column: 5},
 ];
+
+const MAX_ROWS = 9;
+const MAX_COLUMNS = 5;
 
 const allKana = [].concat(katakana, hiragana);
 
@@ -234,22 +245,35 @@ function groupKanaByRow(kana) {
   return rows;
 }
 
+function range(n) {
+  return Array(n).fill().map((_, i) => i+1);
+}
+
+function findKana(kanaList, row, column) {
+  let found = kanaList.filter(kana => kana.row === row && kana.column === column);
+  return found.length > 0 ? found[0] : null;
+}
+
 /* Displays a katakana or hiragana table.
    Props:
    kana: either the katakana or hiragana array
 */
 class KanaTable extends Component {
   render() {
-    let kanaRows = groupKanaByRow(this.props.kana);
+    const ROWS = range(MAX_ROWS);
+    const COLUMNS = range(MAX_COLUMNS);
     return (
       <div className="KanaTable">
         <table>
           <tbody>
-            {kanaRows.map(row => 
+            {ROWS.map(row => 
               <tr>
-                {row.map(kana =>
-                  <td><KanaSymbol kana={kana} /></td>
-                )}
+                {COLUMNS.map(column => {
+                  let kana = findKana(this.props.kana, row, column);
+                  if (kana) {
+                    return <td><KanaSymbol kana={kana} /></td>
+                  } else return <span>&nbsp;</span>
+                })}
               </tr>
             )}
           </tbody>
