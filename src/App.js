@@ -156,9 +156,18 @@ class KanaLearning extends Component {
             </tbody>
           </table>
           <div className="KanaLearningRight-options">
-            <div><input type="radio" name="show-what" value="katakana" onClick={() => this.setOption("katakana")} /> only show katakana</div>
-            <div><input type="radio" name="show-what" value="hiragana" onClick={() => this.setOption("hiragana")} /> only show hiragana</div>
-            <div><input type="radio" name="show-what" value="both" onClick={() => this.setOption("both")} /> show both</div>
+            <div><input type="radio" name="show-what" value="katakana" 
+                        checked={this.state.showWhat === "katakana"} 
+                        onClick={() => this.setOption("katakana")} /> 
+                        &nbsp;only show katakana</div>
+            <div><input type="radio" name="show-what" value="hiragana" 
+                        checked={this.state.showWhat === "hiragana"} 
+                        onClick={() => this.setOption("hiragana")} /> 
+                        &nbsp;only show hiragana</div>
+            <div><input type="radio" name="show-what" value="both" 
+                        checked={this.state.showWhat === "both"} 
+                        onClick={() => this.setOption("both")} /> 
+                        &nbsp;show both</div>
           </div>
         </div>
       </div>
