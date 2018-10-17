@@ -45,6 +45,14 @@ const katakana = [
   {symbol: "ル", value: "ru", row: 9, column: 3},
   {symbol: "レ", value: "re", row: 9, column: 4},
   {symbol: "ロ", value: "ro", row: 9, column: 5},
+  {symbol: "ワ", value: "wa", row: 10, column: 1},
+  {symbol: "ヲ", value: "wo", row: 10, column: 5},
+  {symbol: "ン", value: "n", row: 11, column: 1},
+  {symbol: "ガ", value: "ga", row: 12, column: 1},
+  {symbol: "ギ", value: "gi", row: 12, column: 2},
+  {symbol: "グ", value: "gu", row: 12, column: 3},
+  {symbol: "ゲ", value: "ge", row: 12, column: 4},
+  {symbol: "ゴ", value: "go", row: 12, column: 5},
 ];
 
 const hiragana = [
@@ -55,7 +63,7 @@ const hiragana = [
   {symbol: "お", value: "o", row: 1, column: 5},
 ];
 
-const MAX_ROWS = 9;
+const MAX_ROWS = 12;
 const MAX_COLUMNS = 5;
 
 const allKana = [].concat(katakana, hiragana);

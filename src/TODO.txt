@@ -32,4 +32,5 @@ TODO:
 
 - option: when we guess wrong, show somewhere what the kana was
   (is currently not shown)
-  
+
+- styling of tables needs to be better, esp. empty spaces
