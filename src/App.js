@@ -32,6 +32,11 @@ const katakana = [
   {symbol: "フ", value: "fu", row: 6, column: 3},
   {symbol: "ヘ", value: "he", row: 6, column: 4},
   {symbol: "ホ", value: "ho", row: 6, column: 5},
+  {symbol: "マ", value: "ma", row: 7, column: 1},
+  {symbol: "ミ", value: "mi", row: 7, column: 2},
+  {symbol: "ム", value: "mu", row: 7, column: 3},
+  {symbol: "メ", value: "me", row: 7, column: 4},
+  {symbol: "モ", value: "mo", row: 7, column: 5},
 ];
 
 const hiragana = [
