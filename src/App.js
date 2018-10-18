@@ -53,6 +53,26 @@ const katakana = [
   {symbol: "グ", value: "gu", row: 12, column: 3},
   {symbol: "ゲ", value: "ge", row: 12, column: 4},
   {symbol: "ゴ", value: "go", row: 12, column: 5},
+  {symbol: "ザ", value: "za", row: 13, column: 1},
+  {symbol: "ジ", value: "ji", row: 13, column: 2},
+  {symbol: "ズ", value: "zu", row: 13, column: 3},
+  {symbol: "ゼ", value: "ze", row: 13, column: 4},
+  {symbol: "ゾ", value: "zo", row: 13, column: 5},
+  {symbol: "ダ", value: "da", row: 14, column: 1},
+  {symbol: "ヂ", value: "ji", row: 14, column: 2},
+  {symbol: "ヅ", value: "zu", row: 14, column: 3},
+  {symbol: "デ", value: "de", row: 14, column: 4},
+  {symbol: "ド", value: "do", row: 14, column: 5},
+  {symbol: "バ", value: "ba", row: 15, column: 1},
+  {symbol: "ビ", value: "bi", row: 15, column: 2},
+  {symbol: "ブ", value: "bu", row: 15, column: 3},
+  {symbol: "ベ", value: "be", row: 15, column: 4},
+  {symbol: "ボ", value: "bo", row: 15, column: 5},
+  {symbol: "パ", value: "pa", row: 16, column: 1},
+  {symbol: "ピ", value: "pi", row: 16, column: 2},
+  {symbol: "プ", value: "pu", row: 16, column: 3},
+  {symbol: "ペ", value: "pe", row: 16, column: 4},
+  {symbol: "ポ", value: "po", row: 16, column: 5},
 ];
 
 const hiragana = [
@@ -61,9 +81,10 @@ const hiragana = [
   {symbol: "う", value: "u", row: 1, column: 3},
   {symbol: "え", value: "e", row: 1, column: 4},
   {symbol: "お", value: "o", row: 1, column: 5},
+
 ];
 
-const MAX_ROWS = 12;
+const MAX_ROWS = 16;
 const MAX_COLUMNS = 5;
 
 const allKana = [].concat(katakana, hiragana);
@@ -286,10 +307,12 @@ class KanaTable extends Component {
             {ROWS.map(row => 
               <tr>
                 {COLUMNS.map(column => {
+                  // kinda inefficient but it doesn't really matter for such
+                  // a small table...
                   let kana = findKana(this.props.kana, row, column);
                   if (kana) {
                     return <td><KanaSymbol kana={kana} /></td>
-                  } else return <span>&nbsp;</span>
+                  } else return <td>&nbsp;</td>
                 })}
               </tr>
             )}
