@@ -1,24 +1,8 @@
 TODO:
 
-- options need to be stored
-- options could be moved to separate component?
 - add some hiragana
-- show katakana and/or hiragana depending on options
-- radiobuttons need to show correct selection when we move back
-
-- don't always start with the same kana; pick a random kana when we start
-  (probably needs to be done in a special method?)
 
 - add instructions
-
-- FIXME: kana tables will have "holes" in them; this is currently not handled
-  - will handle it when we run into it
-  - whole table writing structure might need to be replaced; e.g. we could
-    simply create a table and mark the cells with (row, column) and then look
-    up the matching kana, if any
-
-- case should be irrelevant for the answers given!
-  i.e. convert to lowercase
 
 - technically I should be able to replace KatakanaTable and HiraganaTable with
   just calls to KanaTable and the appropriate prop, but I don't know (yet) how
