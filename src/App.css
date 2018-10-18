@@ -50,6 +50,11 @@
   color: red;
 }
 
+.KanaInputArea-correct-answer {
+  color: black;
+  font-weight: normal;
+}
+
 .KanaDisplay {
   border-color: black;
   border-style: solid;

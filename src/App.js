@@ -209,7 +209,7 @@ class KanaLearning extends Component {
  * kana: the kana symbol to be displayed
  * onCheckAnswer(answer): callback to check the answer when we press Enter
  * answerCorrect: true/false/undefined
-   (I guess the idea is that KanaLearning knows whether the answer is wrong or 
+   (The idea is that KanaLearning knows whether the answer is wrong or 
    not, but KanaInputArea does/should not!)
  */
 class KanaInputArea extends Component {
@@ -257,6 +257,11 @@ class KanaInputArea extends Component {
         />
         <div className={"KanaInputArea-answer KanaInputArea-answer-"+answerstr}>
           {this.answerMessage(this.props.answerCorrect)}
+          {this.props.answerCorrect === false ? 
+            <div className="KanaInputArea-correct-answer">
+              right answer: <strong>{this.props.kana.value}</strong>
+            </div> 
+            : ""}
         </div>
       </div>
     )
