@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { range } from './tools';
 import './App.css';
 
 const katakana = [
@@ -268,24 +269,9 @@ class Instructions extends Component {
   }
 }
 
-function groupKanaByRow(kana) {
-  let rows = [], currentRow = [], row = 1;
-  kana.map(item => {
-    if (item.row === row) {
-      currentRow.push(item);
-    } else {
-      rows.push(currentRow);
-      currentRow = [item];
-      row = item.row;
-    }
-  });
-  if (currentRow.length > 0) rows.push(currentRow);
-  return rows;
-}
-
-function range(n) {
-  return Array(n).fill().map((_, i) => i+1);
-}
+//function range(n) {
+//  return Array(n).fill().map((_, i) => i+1);
+//}
 
 function findKana(kanaList, row, column) {
   let found = kanaList.filter(kana => kana.row === row && kana.column === column);
