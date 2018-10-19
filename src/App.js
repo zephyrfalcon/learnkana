@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { range } from './tools';
+import { instructions } from './instructions';
 import './App.css';
 
 const katakana = [
@@ -270,7 +271,7 @@ class KanaInputArea extends Component {
 
 class Instructions extends Component {
   render() {
-    return <p>Instructions</p>
+    return instructions;
   }
 }
 
