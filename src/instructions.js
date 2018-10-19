@@ -8,6 +8,12 @@ const instructions = (
     <div className="instructions">
       <p>So yeah...</p>
       <p>Like dis...</p>
+      <p>Sources:
+          <ul>
+              <li><a href="https://en.wikipedia.org/wiki/Katakana">Katakana table</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Hiragana">Hiragana table</a></li>
+          </ul>
+      </p>
     </div>
 );
 
