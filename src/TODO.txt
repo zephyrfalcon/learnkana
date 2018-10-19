@@ -18,3 +18,11 @@ TODO:
   (is currently not shown)
 
 - styling of tables needs to be better, esp. empty spaces
+
+
+OPTIONAL/LATER:
+
+- have an option to show the tables in a different layout, i.e. length-wise
+  (useful for people with super high resolutions that can fit the whole table
+  on their screens)
+  
