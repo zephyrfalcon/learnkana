@@ -212,14 +212,16 @@ class KanaLearning extends Component {
 
   nextRound() {
     setTimeout(() => {
-      this.pickSymbol()
-      this.setState({answerCorrect: undefined})
+      this.pickSymbol();
+      this.setState({answerCorrect: undefined});
       savedState = this.state;
       }, 1000);
   }
 
   setOption(showWhat) {
     this.setState({showWhat: showWhat});
+    savedState = this.state; // apparently does not have the new showWhat value?
+    savedState.showWhat = showWhat; // for some reason this is necessary
   }
 
   render() {
