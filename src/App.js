@@ -151,9 +151,11 @@ const hiragana = [
   {symbol: "ぽ", value: "po", row: 16, column: 5},
 ];
 
+/* hardcoded, but the number of kana is unlikely to change soon ;-) */
 const MAX_ROWS = 16;
 const MAX_COLUMNS = 5;
 
+// both kana tables merged
 const allKana = [].concat(katakana, hiragana);
 
 function symbols(showWhat) {
@@ -165,6 +167,7 @@ function symbols(showWhat) {
 // another tab
 let savedState = undefined;
 
+// main component
 class KanaLearning extends Component {
   constructor(props) {
     super(props);
@@ -188,6 +191,7 @@ class KanaLearning extends Component {
     this.pickSymbol();
   }
 
+  // pick a random kana symbol that isn't the same as the previous one.
   pickSymbol() {
     let allKanaShown = symbols(this.state.showWhat);
     let oldKana = this.state.currentKana;
@@ -215,11 +219,12 @@ class KanaLearning extends Component {
       this.pickSymbol();
       this.setState({answerCorrect: undefined});
       savedState = this.state;
-      }, 1000);
+    }, 1000);
   }
 
   setOption(showWhat) {
     this.setState({showWhat: showWhat});
+    // show this option properly even if we move to a different tab and back
     savedState = this.state; // apparently does not have the new showWhat value?
     savedState.showWhat = showWhat; // for some reason this is necessary
   }
@@ -341,10 +346,6 @@ class Instructions extends Component {
     return instructions;
   }
 }
-
-//function range(n) {
-//  return Array(n).fill().map((_, i) => i+1);
-//}
 
 function findKana(kanaList, row, column) {
   let found = kanaList.filter(kana => kana.row === row && kana.column === column);
