@@ -1,23 +1,9 @@
 TODO:
 
-- add some hiragana
-
-- add instructions
-
-- technically I should be able to replace KatakanaTable and HiraganaTable with
-  just calls to KanaTable and the appropriate prop, but I don't know (yet) how
-  to do this with the current setup. (App calls <this.state.component />; I need
-  to figure out how to pass props to this.
-
 - later: include digraphs?
 - potentially add a way to limit the number of kana selected? e.g. it would
   make sense to say "only the first 3 rows in the table" etc, but this might be
   a bit user-unfriendly.
-
-- option: when we guess wrong, show somewhere what the kana was
-  (is currently not shown)
-
-- styling of tables needs to be better, esp. empty spaces
 
 
 OPTIONAL/LATER:
