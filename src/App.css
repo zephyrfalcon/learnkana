@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #000060;
   height: 50px;
@@ -180,4 +175,6 @@
 .instructions {
   text-align: left;
   margin: 20px;
+  width: 50%;
+  max-width: 600px;
 }
