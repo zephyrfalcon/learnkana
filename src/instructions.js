@@ -24,13 +24,6 @@ const instructions = (
           are reset when you refresh the page. This is more of a simple way to
           train yourself than a game.
       </p>
-      <hr />
-      <p>Sources:
-          <ul>
-              <li><a href="https://en.wikipedia.org/wiki/Katakana">Katakana table</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/Hiragana">Hiragana table</a></li>
-          </ul>
-      </p>
     </div>
 );
 
