@@ -21,8 +21,7 @@ const instructions = (
       <p>
           <strong>Please note:</strong> There is <strong>no</strong> account or login,
           and scores are <strong>not</strong> saved for later. In fact, they
-          are reset when you refresh the page. This is more of a simple way to
-          train yourself than a game.
+          are reset when you refresh the page. 
       </p>
     </div>
 );
