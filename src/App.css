@@ -22,11 +22,6 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 /* KanaDisplay */
 
 .KanaInputArea {
@@ -95,23 +90,38 @@
 }
 
 .KanaLearningRight-results {
-    border-color: #C0C0C0;
+    border-color: #E0E0E0;
     border-width: 1px;
     border-style: solid;
+    background-color: #E0E0E0;
 }
 
 .KanaLearningRight-results tr {
 }
 
 .KanaLearningRight-results td {
-  border-color: #C0C0C0;
+  border-color: #E0E0E0;
   border-width: 1px;
   border-style: solid;
   text-align: left;
 }
 
+/* column with numbers in it */
+.KanaLearningRight-results td:nth-child(2) {
+  padding-left: 20px;
+  text-align: right;
+}
+
+.KanaLearningRight-results tr:nth-child(1) {
+  font-weight: bold;
+}
+
+.KanaLearningRight-results tr:nth-child(1) td {
+  border-bottom: 1px solid black;  /* !@##$%^ */
+}
+
 .KanaLearningRight-options {
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: left;
 }
 
